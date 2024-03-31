@@ -31,6 +31,8 @@ public class RabbitmqConfig {
         } else if ("getById".equals(rabbitRequest.getTypeOperation())){
             UUID body = UUID.fromString(rabbitRequest.getBody());
             return objectMapper.writeValueAsString(personService.getById(body));
+        } else if ("getAll".equals(rabbitRequest.getTypeOperation())) {
+            return objectMapper.writeValueAsString(personService.getAll());
         }
         return new RabbitResponse<PersonDto>("метод не найден", null).toString();
     }

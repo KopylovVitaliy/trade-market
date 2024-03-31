@@ -23,8 +23,10 @@ public class PersonController {
     private ObjectMapper objectMapper;
 
     @GetMapping
-    public List<PersonDto> getAll (){
-        return new ArrayList<PersonDto>();
+    public String getAll () throws JsonProcessingException {
+        RabbitRequest rabbitRequest = new RabbitRequest("getAll", null);
+        String request = objectMapper.writeValueAsString(rabbitRequest);
+        return (String) rabbitTemplate.convertSendAndReceive("persons", request);
     }
 
     @PostMapping
