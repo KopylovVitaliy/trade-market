@@ -15,6 +15,7 @@ import java.util.UUID;
 @Builder
 public class Advertisement {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne
@@ -34,6 +35,6 @@ public class Advertisement {
     @Column(nullable = false)
     private int price;
 
-    @OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "advertisement", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 }

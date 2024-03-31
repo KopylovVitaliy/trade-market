@@ -1,9 +1,6 @@
 package com.trademarket.services.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @Builder
 public class Image {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
 

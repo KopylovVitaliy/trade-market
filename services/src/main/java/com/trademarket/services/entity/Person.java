@@ -17,7 +17,9 @@ import java.util.UUID;
 @Builder
 public class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
     @Column(unique = true)
     private String email;
     private String firstName;
@@ -29,7 +31,7 @@ public class Person {
     @JoinColumn(name = "image_id")
     private Image image;
 
-    @Column(length = 5, nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -38,5 +40,4 @@ public class Person {
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Comment> comments;
-
 }

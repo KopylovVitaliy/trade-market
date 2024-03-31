@@ -14,6 +14,7 @@ import java.util.UUID;
 @Builder
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "comment_id", nullable = false)
     private UUID commentId;
 
@@ -24,7 +25,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "ad_id", nullable = false)
-    private Advertisement ad;
+    private Advertisement advertisement;
 
     @CreationTimestamp
     @Column(name = "comment_date", length = 20, nullable = false)
