@@ -1,6 +1,7 @@
 package com.trademarket.services.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +23,8 @@ public class ServicesConfiguration {
 //    }
     @Bean
     public ObjectMapper objectMapper(){
-        return new ObjectMapper();
+        ObjectMapper objectMapper =new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        return objectMapper;
     }
 }

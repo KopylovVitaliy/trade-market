@@ -21,9 +21,12 @@ public abstract class AbstractService<Repository extends JpaRepository<
 
     public abstract M getMapper();
 
+    protected E toEntity(D dto) {
+        return getMapper().toEntity(dto);
+    }
 
     public D save(D dto) {
-        E e = getMapper().toEntity(dto);
+        E e = toEntity(dto);
         return getMapper().toDto(getRepository().save(e));
     }
 
@@ -37,7 +40,7 @@ public abstract class AbstractService<Repository extends JpaRepository<
     }
 
     public E edit(D dto){
-        E e = getMapper().toEntity(dto);
+        E e = toEntity(dto);
         return getRepository().save(e);
     }
 }

@@ -16,9 +16,9 @@ public class CommentDto implements Serializable {
 
     private UUID commentId;
 
-    private PersonDto author;
+    private UUID authorId;
 
-    private AdvertisementDto advertisement;
+    private UUID advertisementId;
 
     private LocalDateTime createdAt;
 

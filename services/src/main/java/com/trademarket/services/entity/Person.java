@@ -35,9 +35,9 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Advertisement> advertisements;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Comment> comments;
 }

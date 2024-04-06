@@ -24,7 +24,7 @@ public class PersonDto implements Serializable {
 
     private Role role;
 
-    private List<AdvertisementDto> advertisements;
+    private List<UUID> advertisements;
 
-    private List<CommentDto> comments;
+    private List<UUID> comments;
 }

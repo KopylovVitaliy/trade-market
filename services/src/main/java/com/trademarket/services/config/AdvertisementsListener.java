@@ -30,6 +30,11 @@ public class AdvertisementsListener extends AbstractListener<AdvertisementDto, A
     }
 
     @Override
+    protected Class<AdvertisementDto> getDtoClass() {
+        return AdvertisementDto.class;
+    }
+
+    @Override
     @RabbitListener(queues = "advertisements")
     public String listen(String request) throws JsonProcessingException {
         return commonListen(request);

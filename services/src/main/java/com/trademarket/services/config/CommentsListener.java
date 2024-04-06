@@ -30,6 +30,11 @@ public class CommentsListener extends AbstractListener<CommentDto, CommentReposi
     }
 
     @Override
+    protected Class<CommentDto> getDtoClass() {
+        return CommentDto.class;
+    }
+
+    @Override
     @RabbitListener(queues = "comments")
     public String listen(String request) throws JsonProcessingException {
         return commonListen(request);

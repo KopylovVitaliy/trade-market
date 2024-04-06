@@ -30,6 +30,11 @@ public class PersonsListener extends AbstractListener<PersonDto, PersonRepositor
     }
 
     @Override
+    protected Class<PersonDto> getDtoClass() {
+        return PersonDto.class;
+    }
+
+    @Override
     @RabbitListener(queues = "persons")
     public String listen(String request) throws JsonProcessingException {
         return commonListen(request);

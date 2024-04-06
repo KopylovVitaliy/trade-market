@@ -26,8 +26,8 @@ public class AbstractRestController <D> {
     }
 
     @PostMapping
-    public String add(@RequestBody D person) throws JsonProcessingException {
-        String D = objectMapper.writeValueAsString(person);
+    public String add(@RequestBody D dto) throws JsonProcessingException {
+        String D = objectMapper.writeValueAsString(dto);
         RabbitRequest rabbitRequest = new RabbitRequest("save", D);
         String request = objectMapper.writeValueAsString(rabbitRequest);
         return (String) rabbitTemplate.convertSendAndReceive(ROUTING_KEY, request);

@@ -17,9 +17,9 @@ import java.util.UUID;
 public class AdvertisementDto implements Serializable {
     private UUID id;
 
-    private PersonDto author;
+    private UUID authorId;
 
-    private ImageDto image;
+    private UUID imageId;
 
     private String title;
 
@@ -27,5 +27,5 @@ public class AdvertisementDto implements Serializable {
 
     private int price;
 
-    private List<CommentDto> comments = new ArrayList<>();
+    private List<CommentDto> comments;
 }
