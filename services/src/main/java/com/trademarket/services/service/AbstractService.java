@@ -1,7 +1,6 @@
 package com.trademarket.services.service;
 
 import com.trademarket.services.mapper.CommonMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -39,8 +38,8 @@ public abstract class AbstractService<Repository extends JpaRepository<
         return getMapper().toDtoList(getRepository().findAll());
     }
 
-    public E edit(D dto){
-        E e = toEntity(dto);
-        return getRepository().save(e);
+
+    public void delete(UUID id) {
+        getRepository().deleteById(id);
     }
 }

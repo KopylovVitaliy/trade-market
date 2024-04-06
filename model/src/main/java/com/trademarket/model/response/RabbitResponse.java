@@ -7,7 +7,11 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class RabbitResponse <B> {
+public class RabbitResponse {
     private String errorMessage;
-    private B body;
+    private String body;
+
+    public RabbitResponse(String body){
+        this.body = body;
+    }
 }

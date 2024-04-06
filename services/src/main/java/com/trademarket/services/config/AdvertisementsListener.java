@@ -1,6 +1,5 @@
 package com.trademarket.services.config;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trademarket.model.dto.AdvertisementDto;
 import com.trademarket.services.entity.Advertisement;
@@ -13,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AdvertisementsListener extends AbstractListener<AdvertisementDto, AdvertisementRepository,
-        Advertisement, AdvertisementMapper, AdvertisementService>{
+        Advertisement, AdvertisementMapper, AdvertisementService> {
     @Autowired
     private AdvertisementService advertisementService;
     @Autowired
@@ -36,7 +35,7 @@ public class AdvertisementsListener extends AbstractListener<AdvertisementDto, A
 
     @Override
     @RabbitListener(queues = "advertisements")
-    public String listen(String request) throws JsonProcessingException {
+    public String listen(String request) {
         return commonListen(request);
     }
 }

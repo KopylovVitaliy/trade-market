@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 
-public class AbstractRestController <D> {
+public class AbstractRestController<D> {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
@@ -18,8 +18,9 @@ public class AbstractRestController <D> {
     private ObjectMapper objectMapper;
 
     protected String ROUTING_KEY;
+
     @GetMapping
-    public String getAll () throws JsonProcessingException {
+    public String getAll() throws JsonProcessingException {
         RabbitRequest rabbitRequest = new RabbitRequest("getAll", null);
         String request = objectMapper.writeValueAsString(rabbitRequest);
         return (String) rabbitTemplate.convertSendAndReceive(ROUTING_KEY, request);
@@ -43,8 +44,15 @@ public class AbstractRestController <D> {
     @PutMapping("/{id}")
     public String edit(@RequestBody D person, @PathVariable UUID id) throws JsonProcessingException {
         String D = objectMapper.writeValueAsString(person);
-        RabbitRequest rabbitRequest = new RabbitRequest("edit", D);
+        RabbitRequest rabbitRequest = new RabbitRequest("save", D);
         String request = objectMapper.writeValueAsString(rabbitRequest);
         return (String) rabbitTemplate.convertSendAndReceive(ROUTING_KEY, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable UUID id) throws JsonProcessingException {
+        RabbitRequest rabbitRequest = new RabbitRequest("delete", id.toString());
+        String request = objectMapper.writeValueAsString(rabbitRequest);
+        rabbitTemplate.convertSendAndReceive(ROUTING_KEY, request);
     }
 }

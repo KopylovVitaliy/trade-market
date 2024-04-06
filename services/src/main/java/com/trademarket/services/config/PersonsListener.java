@@ -1,6 +1,5 @@
 package com.trademarket.services.config;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trademarket.model.dto.PersonDto;
 import com.trademarket.services.entity.Person;
@@ -13,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class PersonsListener extends AbstractListener<PersonDto, PersonRepository,
-        Person, PersonMapper, PersonService>{
+        Person, PersonMapper, PersonService> {
     @Autowired
     private PersonService personService;
     @Autowired
@@ -36,7 +35,7 @@ public class PersonsListener extends AbstractListener<PersonDto, PersonRepositor
 
     @Override
     @RabbitListener(queues = "persons")
-    public String listen(String request) throws JsonProcessingException {
+    public String listen(String request) {
         return commonListen(request);
     }
 }

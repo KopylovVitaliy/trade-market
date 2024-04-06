@@ -1,6 +1,5 @@
 package com.trademarket.services.config;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trademarket.model.dto.CommentDto;
 import com.trademarket.services.entity.Comment;
@@ -13,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CommentsListener extends AbstractListener<CommentDto, CommentRepository,
-        Comment, CommentMapper, CommentService>{
+        Comment, CommentMapper, CommentService> {
     @Autowired
     private CommentService commentService;
     @Autowired
@@ -36,7 +35,7 @@ public class CommentsListener extends AbstractListener<CommentDto, CommentReposi
 
     @Override
     @RabbitListener(queues = "comments")
-    public String listen(String request) throws JsonProcessingException {
+    public String listen(String request) {
         return commonListen(request);
     }
 }
