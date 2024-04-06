@@ -16,8 +16,6 @@ import java.util.UUID;
  */
 public abstract class AbstractService<Repository extends JpaRepository<
         E, UUID>, D, E, M extends CommonMapper<D, E>> {
-    Repository repository;
-    M mapper;
 
     public abstract Repository getRepository();
 
@@ -36,5 +34,10 @@ public abstract class AbstractService<Repository extends JpaRepository<
 
     public List<D> getAll() {
         return getMapper().toDtoList(getRepository().findAll());
+    }
+
+    public E edit(D dto){
+        E e = getMapper().toEntity(dto);
+        return getRepository().save(e);
     }
 }

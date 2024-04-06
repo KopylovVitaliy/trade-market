@@ -27,7 +27,7 @@ public class Person {
     private String password;
     private String phone;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "image_id")
     private Image image;
 
@@ -35,9 +35,9 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
     private List<Advertisement> advertisements;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
     private List<Comment> comments;
 }

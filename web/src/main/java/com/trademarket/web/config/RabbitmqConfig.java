@@ -24,6 +24,6 @@ public class RabbitmqConfig {
 
     @Bean
     public Queue newPersonQueue() {
-        return new Queue("newPersons", false);
+        return new Queue("advertisements", false);
     }
 }
