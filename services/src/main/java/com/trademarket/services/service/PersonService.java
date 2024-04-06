@@ -1,8 +1,6 @@
 package com.trademarket.services.service;
 
-import com.trademarket.model.dto.CommentDto;
 import com.trademarket.model.dto.PersonDto;
-import com.trademarket.services.entity.Comment;
 import com.trademarket.services.entity.Person;
 import com.trademarket.services.mapper.PersonMapper;
 import com.trademarket.services.repository.PersonRepository;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonService
-        extends AbstractService<PersonRepository, PersonDto, Person, PersonMapper>{
+        extends AbstractService<PersonRepository, PersonDto, Person, PersonMapper> {
 
     @Autowired
     private PersonRepository personRepository;
@@ -20,7 +18,7 @@ public class PersonService
     private PersonMapper personMapper;
 
     @Override
-    public PersonRepository getRepository(){
+    public PersonRepository getRepository() {
         return personRepository;
     }
 
@@ -28,6 +26,5 @@ public class PersonService
     public PersonMapper getMapper() {
         return personMapper;
     }
-
 
 }

@@ -4,11 +4,10 @@ import com.trademarket.model.dto.PersonDto;
 import com.trademarket.services.entity.Advertisement;
 import com.trademarket.services.entity.Comment;
 import com.trademarket.services.entity.Person;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 @Component
 public class PersonMapper implements CommonMapper<PersonDto, Person> {
 
@@ -30,9 +29,9 @@ public class PersonMapper implements CommonMapper<PersonDto, Person> {
                 .email(entity.getEmail())
                 .phone(entity.getPhone())
                 .role(entity.getRole())
-                .advertisements(entity.getAdvertisements()
+                .advertisements(entity.getAdvertisements() == null ? List.of() : entity.getAdvertisements()
                         .stream().map(Advertisement::getId).toList())
-                .comments(entity.getComments()
+                .comments(entity.getComments() == null ? List.of() : entity.getComments()
                         .stream().map(Comment::getCommentId).toList())
                 .secondName(entity.getSecondName())
                 .firstName(entity.getFirstName())

@@ -16,6 +16,7 @@ public class RabbitQueueConfig {
         rabbitTemplate.setReplyTimeout(30000);
         return rabbitTemplate;
     }
+
     @Bean
     public Queue personQueue() {
         return new Queue("persons", true);
@@ -25,8 +26,14 @@ public class RabbitQueueConfig {
     public Queue advertisenentsQueue() {
         return new Queue("advertisements", false);
     }
+
     @Bean
     public Queue commentsQueue() {
         return new Queue("comments", false);
+    }
+
+    @Bean
+    public Queue imagesQueue() {
+        return new Queue("images", false);
     }
 }
