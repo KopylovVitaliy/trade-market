@@ -2,16 +2,12 @@ package com.trademarket.services.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
-
 @Configuration
 public class ServicesConfiguration {
-//    @Bean
+    //    @Bean
 //    public DataSource datasource() {
 //        return DataSourceBuilder.create()
 //                .driverClassName("org.postgresql.Driver")
@@ -22,9 +18,10 @@ public class ServicesConfiguration {
 //
 //    }
     @Bean
-    public ObjectMapper objectMapper(){
-        ObjectMapper objectMapper =new ObjectMapper();
+    public ObjectMapper objectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         return objectMapper;
     }
+
 }
