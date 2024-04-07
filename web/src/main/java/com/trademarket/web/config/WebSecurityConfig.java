@@ -14,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -33,15 +32,12 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/api/**").hasRole("ADMIN")
-                        .requestMatchers("/api/**").hasRole("USER")
-
-                ).httpBasic(httpSecurityHttpBasicConfigurer ->
+        http.authorizeHttpRequests(expressionInterceptUrlRegistry ->
+                        expressionInterceptUrlRegistry
+                                .requestMatchers("/**").hasRole("ADMIN"))
+                .httpBasic(httpSecurityHttpBasicConfigurer ->
                         httpSecurityHttpBasicConfigurer.authenticationEntryPoint(authenticationEntryPoint));
-        http.addFilterAfter(new CustomFilter(), BasicAuthenticationFilter.class);
+//        http.addFilterAfter(new CustomFilter(), BasicAuthenticationFilter.class);
         return http.build();
     }
 
