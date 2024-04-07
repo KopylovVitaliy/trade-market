@@ -16,6 +16,6 @@ public class WebUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         PersonDto person = personProducer.getByEmail(username);
-        return new WebUserDetails(person.getEmail(), person.getPassword(), person.getRole());
+        return new WebUserDetails(person.getEmail(), person.getPassword(), person.getRole(), person.getId());
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Setter
 @AllArgsConstructor
@@ -15,6 +16,7 @@ public class WebUserDetails implements UserDetails {
     private String username;
     private String password;
     private Role role;
+    private UUID id;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
