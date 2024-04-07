@@ -38,7 +38,7 @@ public abstract class AbstractListener<D, R extends JpaRepository<E, UUID>,
             } else if ("delete".equals(rabbitRequest.getTypeOperation())) {
                 response = delete(rabbitRequest);
             } else {
-                return new RabbitResponse("метод не найден", null).toString();
+                response = customListen(rabbitRequest);
             }
         } catch (JsonProcessingException e) {
             log.error("Некорректный запрос ", e);
@@ -50,6 +50,12 @@ public abstract class AbstractListener<D, R extends JpaRepository<E, UUID>,
             log.error("Некорректное тело запроса ", e);
             return "{\"errorMessage\" : \"ошибка записи\"}";
         }
+
+    }
+
+    protected RabbitResponse customListen(RabbitRequest rabbitRequest) {
+        log.error("метод не найден. " + rabbitRequest.getTypeOperation());
+        return new RabbitResponse("метод не найден " + rabbitRequest.getTypeOperation(), null);
 
     }
 

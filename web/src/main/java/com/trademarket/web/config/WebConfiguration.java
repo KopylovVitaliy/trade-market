@@ -6,12 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class WebConfiguration {
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
     @Bean
-    public ObjectMapper objectMapper(){
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -18,13 +19,10 @@ public class PersonDto implements Serializable {
     private String email;
     private String firstName;
     private String secondName;
+    private String password;
     private String phone;
-
     private ImageDto image;
-
     private Role role;
-
     private List<UUID> advertisements;
-
     private List<UUID> comments;
 }
