@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="Vitaliy">
+        <createTable tableName="advertisement">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="author_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_advertisement_author" referencedTableName="person"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="image_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_advertisement_image" referencedTableName="image"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="title" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
