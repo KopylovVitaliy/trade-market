@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="4" author="Vitaliy">
+        <createTable tableName="comment">
+            <column name="comment_id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="author_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_comment_author" referencedTableName="person"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="advertisement_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_comment_advertisement"
+                             referencedTableName="advertisement" referencedColumnNames="id"/>
+            </column>
+            <column name="comment_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
